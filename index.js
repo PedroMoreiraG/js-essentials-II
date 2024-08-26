@@ -3,21 +3,69 @@
 // 01 - Function
 // getTotal(inventory: [{article: '🍔', price: 15, quantity: '1'}, {article: '🍟', price: 10, quantity: '2'}])
 // it should return the total. for the example data 👆 it should be: 35. (15x1 + 10x2)
-
+function getTotal(inventory2) {
+    const total = inventory2.reduce((accumulator, item) => {
+      const quantity = Number(item.quantity);
+      const price = Number(item.price);
+  
+      const itemTotal = price * quantity;
+      return accumulator + itemTotal;
+    }, 0);  
+    return total;
+  }
+  const inventory2 = [
+    { article: '🍔', price: 15, quantity: '1' },
+    { article: '🍟', price: 10, quantity: '2' }
+  ];
+  
+  console.log(getTotal(inventory2));
 // 02 - Function
 // countBanana(inventory:['🥑','🍌','🥭', '🍌']})
+
+function countBanana(inventory){
+    const banana = inventory.find(item => item === '🍌').length;
+    return banana;
+
+}
+
+const inventory=['🥑','🍌','🥭', '🍌']
+countBanana(inventory);
+
+console.log(countBanana(inventory));
 
 // 03- Function
 //   const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 //   console.log(filterEvenNumbers(numbers)); // Output: [2, 4, 6, 8, 10]
 
+function filterEvenNumbers(numbers){
+    return numbers = numbers.filter(number => number % 2 === 0 ); 
+}
+
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+console.log(filterEvenNumbers(numbers));
+
+
 // 04 - function
 //   const numbers = [1, 2, 3, 4, 5];
 //   console.log(squareNumbers(numbers)); // Output: [1, 4, 9, 16, 25]
 
+function squareNumbers(numbers2){
+    return numbers2 = numbers2.map(number => number*number);
+}
+
+const numbers2 = [1, 2, 3, 4, 5];
+console.log(squareNumbers(numbers2));
+
+
 // 05 - function
 //   const numbers = [1, 2, 3, 4, 5];
 //   console.log(findMax(numbers)); // Output: 5
+function findMax(numbers3){
+    return Math.max(...numbers3);
+}
+
+const numbers3 = [1, 2, 3, 4, 5];
+console.log(findMax(numbers3));
 
 // 06 - function
 //   const people = [
@@ -27,6 +75,22 @@
 //     { name: "El Chengue", age: 49 }
 //   ];
 //   console.log(calculateAverageAge(people)); // Output: 32.5
+function calculateAverageAge(people){
+    const totalAge = people.reduce((subtotal, person) => subtotal + person.age, 0);
+
+    const averageAge = Number(totalAge / people.length);
+
+    return averageAge;
+}
+
+const people = [
+    { name: "Juan", age: 25 },
+    { name: "Carla", age: 30 },
+    { name: "Lucia", age: 35 },
+    { name: "El Chengue", age: 49 }
+];
+
+console.log(calculateAverageAge(people)); 
 
 // 07 - function  combinedHobbies(persons)
 // Function to combine hobbies from all persons
