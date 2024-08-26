@@ -7,17 +7,17 @@ function getTotal(inventory2) {
     const total = inventory2.reduce((accumulator, item) => {
       const quantity = Number(item.quantity);
       const price = Number(item.price);
-  
+
       const itemTotal = price * quantity;
       return accumulator + itemTotal;
-    }, 0);  
+    }, 0);
     return total;
   }
   const inventory2 = [
     { article: '🍔', price: 15, quantity: '1' },
     { article: '🍟', price: 10, quantity: '2' }
   ];
-  
+
   console.log(getTotal(inventory2));
 // 02 - Function
 // countBanana(inventory:['🥑','🍌','🥭', '🍌']})
@@ -38,7 +38,7 @@ console.log(countBanana(inventory));
 //   console.log(filterEvenNumbers(numbers)); // Output: [2, 4, 6, 8, 10]
 
 function filterEvenNumbers(numbers){
-    return numbers = numbers.filter(number => number % 2 === 0 ); 
+    return numbers = numbers.filter(number => number % 2 === 0 );
 }
 
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -90,7 +90,7 @@ const people = [
     { name: "El Chengue", age: 49 }
 ];
 
-console.log(calculateAverageAge(people)); 
+console.log(calculateAverageAge(people));
 
 // 07 - function  combinedHobbies(persons)
 // Function to combine hobbies from all persons
@@ -123,6 +123,32 @@ console.log(calculateAverageAge(people));
 //   'dancing 💃', 'singing 🎤', 'running 🏃‍♀️'
 // ]
 
+function combinedHobbies(persons){
+    const hobbie = persons.map(person => person.hobbies).flat();
+
+    return hobbie;
+}
+
+const persons = [
+        {
+           name: 'Paula',
+           hobbies: ['reading 📚', 'gardening 🌱', 'painting 🎨']
+         },
+         {
+           name: 'Martin',
+           hobbies: ['cycling 🚴', 'cooking 🍳', 'hiking 🥾']
+         },
+         {
+           name: 'Juan',
+           hobbies: ['photography 📸', 'traveling ✈️', 'swimming 🏊‍♂️']
+         },
+         {
+           name: 'Veronica',
+           hobbies: ['dancing 💃', 'singing 🎤', 'running 🏃‍♀️']
+         }
+       ];
+
+console.log(combinedHobbies(persons));
 // 08 - function printChemicalInfo(chemicals)
 // const chemicals = [
 //     {
@@ -194,12 +220,22 @@ console.log(calculateAverageAge(people));
 // | Solubility: Miscible with water                      |
 // +-------------------------------------------------------+
 
+function printChemicalInfo(chemicals){
+}
 // 09 - function getGetUniqueGuestList(guestList)
 // const guestList = ['Alice 🙆🏻‍♀️', 'Bob 🙍🏼', 'Charlie 👨🏼‍🚀', 'Alice 🙆🏻‍♀️', 'David 🤵🏿‍♂️'];
 
 // Remove duplicated elements from the  guests list
 // Expected getGetUniqueGuestList(guestList)) ['Alice 🙆🏻‍♀️', 'Bob 🙍🏼', 'Charlie 👨🏼‍🚀', 'David 🤵🏿‍♂️']
 
+function getGetUniqueGuestList(guestList){
+    const List = new Set(guestList);
+
+    return List;
+}
+
+const guestList = ['Alice 🙆🏻‍♀️', 'Bob 🙍🏼', 'Charlie 👨🏼‍🚀', 'Alice 🙆🏻‍♀️', 'David 🤵🏿‍♂️'];
+getGetUniqueGuestList(guestList);
 // 10 - function showUserProfiles(user)
 // User data
 
@@ -225,6 +261,39 @@ console.log(calculateAverageAge(people));
 //   showUserProfile(user1); // Expected output: 'carol.smith, carol.smith77'
 //   showUserProfile(user2); // Expected output: 'jane.smith@example.com'
 
+function showUserProfile(user){
+    const {profile} = user;
+
+    if (profile.social){
+        const {twitter, facebook} = profile.social;
+        console.log(twitter+ ", " +facebook);
+    }
+    if (profile.email){
+        console.log(profile.email);
+    }
+}
+
+const user1 = {
+     id: 1,
+     name: 'Carol Smith',
+     profile: {
+       social: {
+          twitter: 'carol.smith',
+          facebook: 'carol.smith77'
+      }
+    }
+};
+
+ const user2 = {
+     id: 2,
+     name: 'Jane Smith',
+     profile: {
+       email: 'jane.smith@example.com'
+     }
+};
+
+showUserProfile(user1);
+showUserProfile(user2);
 // 11 - function sortLeaderBoardByScoreDesc(leaderBoard)
 // The function should sort the players by score as it's displayed on the expected output
 
@@ -253,6 +322,24 @@ console.log(calculateAverageAge(people));
 //   { player: 'Bobby', score: 11 }
 // ]
 
+function sortLeaderBoardByScoreDesc(leaderBoard){
+    const board = leaderBoard.sort((a,b) => b.score - a.score );
+
+    return board;
+}
+
+const leaderBoard = [
+       { player: "John", score: 80 },
+       { player: "Charlie", score: 20 },
+       { player: "Julio", score: 50 },
+       { player: "Bob", score: 80 },
+       { player: "Bobby", score: 11 },
+       { player: "Tommy", score: 43 },
+       { player: "Eric", score: 99 },
+       { player: "Alice", score: 100 },
+       { player: "Alfred", score: 30 },
+     ];
+console.log(sortLeaderBoardByScoreDesc(leaderBoard));
 // 12 - function
 
 // function getTopFiveWorstPlayers(leaderBoard)
@@ -268,52 +355,62 @@ console.log(calculateAverageAge(people));
 
 // NOTE: ⚠️ original array shouldn't be modified. or we are missing players.
 
-// 13 - function safeCopy()
-// const companyHierarchy = {
-//     name: 'Company',
-//     departments: [
-//       {
-//         name: 'Engineering',
-//         head: 'Alice',
-//         subDepartments: [
-//           {
-//             name: 'Backend',
-//             head: 'Bob',
-//             employees: ['Charlie', 'David']
-//           },
-//           {
-//             name: 'Frontend',
-//             head: 'Eve',
-//             employees: ['Frank', 'Grace']
-//           }
-//         ]
-//       },
-//       {
-//         name: 'Sales',
-//         head: 'Henry',
-//         employees: ['Isaac', 'Jane']
-//       }
-//     ]
-//   };
+function getTopFiveWorstPlayers(leaderBoard){
+    const notTopFive = leaderBoard.sort((a,b) => a.score - b.score);
 
-// Deep copy function
-// function safeCopy(obj) {
-//      ToDo (complete the function here...)
-//  }
+    for (i = 0; i<5; i++){
+        console.log(notTopFive[i]);
+    }
+}
 
-//   // Example usage
-//   const copiedHierarchy = safeCopy(companyHierarchy);
+getTopFiveWorstPlayers(leaderBoard);
 
-//   // Modify the copied hierarchy
-//   copiedHierarchy.departments.push({
-//     name: 'Marketing',
-//     head: 'Karen',
-//     employees: ['Liam', 'Mia']
-//   });
+//13 - function safeCopy()
+const companyHierarchy = {
+    name: 'Company',
+    departments: [
+      {
+        name: 'Engineering',
+        head: 'Alice',
+        subDepartments: [
+          {
+            name: 'Backend',
+            head: 'Bob',
+            employees: ['Charlie', 'David']
+          },
+          {
+            name: 'Frontend',
+            head: 'Eve',
+            employees: ['Frank', 'Grace']
+          }
+        ]
+      },
+      {
+        name: 'Sales',
+        head: 'Henry',
+        employees: ['Isaac', 'Jane']
+      }
+    ]
+  };
 
-//   // Verify independence
-//   console.log('Original Company Hierarchy:');
-//   console.log(companyHierarchy);
+//Deep copy function
+function safeCopy(obj) {
+     const copy = JSON.parse(JSON.stringify(obj));
+ }
 
-//   console.log('Copied Company Hierarchy with Modifications:');
-//   console.log(copiedHierarchy);
+  // Example usage
+  const copiedHierarchy = safeCopy(companyHierarchy);
+
+  // Modify the copied hierarchy
+  copiedHierarchy.departments.push({
+    name: 'Marketing',
+    head: 'Karen',
+    employees: ['Liam', 'Mia']
+  });
+
+  // Verify independence
+  console.log('Original Company Hierarchy:');
+  console.log(companyHierarchy);
+
+  console.log('Copied Company Hierarchy with Modifications:');
+  console.log(copiedHierarchy);
